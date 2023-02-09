@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param } from '@nestjs/common';
 
 @Controller('ninjas')
 export class NinjasController {
@@ -10,9 +10,28 @@ export class NinjasController {
     }
 
 
+// SHOW /ninjas/1
     @Get(':id')
-    getOneNinja(){
+    getOneNinja(@Param('id') id: string){
         return [];
+    }
+
+
+    @Post()
+    createNinja(){
+        return {};
+    }
+
+
+    @Put(':id')
+    updateNinja(@Param('id') id: string){
+        return {};
+    }
+
+
+    @Delete(':id')
+    removeNinja(@Param('id') id: string){
+        return {};
     }
 }
 
