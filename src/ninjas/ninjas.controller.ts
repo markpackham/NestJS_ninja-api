@@ -22,7 +22,7 @@ export class NinjasController {
 
 
     @Post()
-    createNinja(){
+    createNinja(@Body() createNinjaDto){
         return {};
     }
 
