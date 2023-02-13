@@ -29,9 +29,8 @@ export class NinjasController {
 // SHOW /ninjas/1
     @Get(':id')
     getOneNinja(@Param('id') id: string){
-        return {
-            id,
-        };
+        // could have also type cast an string to number doing "+id"
+        return this.ninjasService.getNinja(parseInt(id));
     }
 
 
