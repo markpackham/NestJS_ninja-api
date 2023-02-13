@@ -1,16 +1,18 @@
 import { Controller, Get, Post, Put, Delete, Param, Query, Body } from '@nestjs/common';
 import { CreateNinjaDto } from './dto/create-ninja.dto';
 import { UpdateNinjaDto } from './dto/update-ninja.dto';
+import { NinjasService } from './ninjas.service';
 
 @Controller('ninjas')
 export class NinjasController {
 
 // GET /ninjas -> return ninjas
-// GET /ninjas?type=fast -> return a fast ninja
-// eg http://localhost:3000/ninjas?type=fast
+// GET /ninjas?weapon=stars -> return a stars ninja
+// eg http://localhost:3000/ninjas?weapon=stars
     @Get()
-    getNinjas(@Query('type') type: string){
-        return [{type}];
+    getNinjas(@Query('weapon') weapon: 'stars' | 'nunchucks'){
+        const service = new NinjasService();
+        return service.getNinjas(weapon);
     }
 
 
