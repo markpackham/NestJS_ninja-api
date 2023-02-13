@@ -36,24 +36,19 @@ export class NinjasController {
 
     @Post()
     createNinja(@Body() createNinjaDto: CreateNinjaDto){
-        return {
-            name: createNinjaDto.name,
-        };
+        return this.ninjasService.createNinja(createNinjaDto);
     }
 
 
     @Put(':id')
     updateNinja(@Param('id') id: string, @Body() updateNinjaDto: UpdateNinjaDto){
-        return {
-            id,
-            name: updateNinjaDto.name,
-        };
+        return this.ninjasService.updateNinja(parseInt(id),updateNinjaDto);
     }
 
 
     @Delete(':id')
     removeNinja(@Param('id') id: string){
-        return {};
+        return this.ninjasService.removeNinja(parseInt(id));
     }
 }
 
