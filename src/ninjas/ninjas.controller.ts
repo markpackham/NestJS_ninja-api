@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Param, Query, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Query, Body, NotFoundException } from '@nestjs/common';
 import { CreateNinjaDto } from './dto/create-ninja.dto';
 import { UpdateNinjaDto } from './dto/update-ninja.dto';
 import { NinjasService } from './ninjas.service';
@@ -29,8 +29,13 @@ export class NinjasController {
 // SHOW /ninjas/1
     @Get(':id')
     getOneNinja(@Param('id') id: string){
-        // could have also type cast an string to number doing "+id"
-        return this.ninjasService.getNinja(parseInt(id));
+        try {
+            // could have also type cast an string to number doing "+id"
+            return this.ninjasService.getNinja(parseInt(id));
+        } catch (error) {
+            throw new NotFoundException();
+        }
+        
     }
 
 
