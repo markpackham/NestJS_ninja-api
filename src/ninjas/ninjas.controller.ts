@@ -26,7 +26,7 @@ export class NinjasController {
     }
 
 
-// SHOW /ninjas/1
+    // SHOW /ninjas/1
     @Get(':id')
     getOneNinja(@Param('id', ParseIntPipe) id: number){
         try {
